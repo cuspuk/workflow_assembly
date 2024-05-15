@@ -202,6 +202,7 @@ definitions:
       max_number_of_hits:
         type: integer
         examples: [5]
+        default: "Maximum number of hits when querying DB."
       max_query_seqs:
         type: integer
         minimum: 1
