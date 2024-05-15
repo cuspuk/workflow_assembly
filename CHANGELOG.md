@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.1](https://github.com/cuspuk/workflow_assembly/compare/v2.1.0...v2.1.1) (2024-05-15)
+
+
+### Bug Fixes
+
+* fixes after repo transfer and reads module bump ([96373bb](https://github.com/cuspuk/workflow_assembly/commit/96373bb9d6f909aa0a52298c5df6e42b934ac53e))
+
 ## [2.1.0](https://github.com/xsitarcik/assembly/compare/v2.0.1...v2.1.0) (2024-04-16)
 
 
