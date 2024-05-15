@@ -12,8 +12,12 @@ assembly:
 
 ### HYPERPARAMETERS #############################
 
+reads__subsampling__seqtk: # Relevant only if reads->subsampling is set to seqtk.
+  seed: 1 # int(1): Seed value to use for random number generator.
+  n_reads: TO_BE_DEFINED # int: Number of reads to subsample.
+  reduce_memory: true # bool(true): Set to 2-pass mode, slower but with less memory used.
+
 reads__trimming__cutadapt:
-  # 1st stage - trimming
   cut_from_start_r1: null # OPT - removes a specified number of bases from the beginning of the R1 read.
   cut_from_start_r2: null # OPT - removes a specified number of bases from the beginning of the R2 read.
   cut_from_end_r1: null # OPT - removes a specified number of bases from the end of the R1 read.
@@ -22,22 +26,18 @@ reads__trimming__cutadapt:
   quality_cutoff_from_3_end_r1: 20 # cutoff on 3' end of R1 read. The second step.
   quality_cutoff_from_5_end_r2: 20 # cutoff on 5' end of R2 read. The second step.
   quality_cutoff_from_3_end_r2: 20 # cutoff on 3' end of R2 read. The second step.
-
-  # 2nd stage - Adapter removal
-  adapter_removal: # OPT - set "do" to false to skip this step.
-    do: false # If true, all below options are required. Else, they are ignored/can be deleted.
-
-  # 3rd stage - post adapter trimming
+  nextseq_trimming_mode: false # bool(false): Modify quality-trimming algorithm to expect two-color chemistry data (NextSeq).
+  do_adapter_removal: false # bool(false): Whether to do adapter removal or not.
   shorten_to_length: null # OPT - both R1 and R2 are shortened to this length.
-  trim_N_bases_on_ends: null # OPT - trim flanking N's on both read ends.
-
-  # 4th stage - Filtering
+  trim_N_bases_on_ends: false # OPT - trim flanking N's on both read ends.
   min_length_r1: null # OPT - minimum R1 read length. If R1 read is shorter, both R1 and R2 reads are discarded. The fourth step.
   min_length_r2: null # OPT - minimum R2 read length. If R2 read is shorter, both R1 and R2 reads are discarded. The fourth step.
   max_length_r1: null # OPT - maximum R1 read length. If R1 read is longer, both R1 and R2 reads are discarded. The fourth step.
   max_length_r2: null # OPT - maximum R2 read length. If R2 read is longer, both R1 and R2 reads are discarded. The fourth step.
   max_n_bases: null # OPT - Discard read if R1 or R2 has more than the specified number of N bases. The fifth step.
   max_expected_errors: null # OPT - Discard read if R1 or R2 has more expected errors than this.
+
+reads__deduplication__fastuniq: {} # Relevant only if reads->deduplication is set to fastuniq. There are no parameters to be defined.
 
 assembly__assembly__spades:
   mode: standard # Default: "standard". Supported values: standard, meta, plasmid, metaplasmid, metaviral, bio, rna, rnaviral.
@@ -77,4 +77,4 @@ threads:
   assembly__report: 2
 
 module_versions:
-  reads: "v3.2.1"
+  reads: "v3.4.5"

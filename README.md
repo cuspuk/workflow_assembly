@@ -1,23 +1,19 @@
 # Snakemake workflow: assembly
 
 [![Snakemake](https://img.shields.io/badge/snakemake-≥7.25.0-brightgreen.svg)](https://snakemake.github.io)
-[![Tests](https://github.com/xsitarcik/assembly/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/xsitarcik/assembly/actions/workflows/main.yml?branch=main)
+[![Tests](https://github.com/cuspuk/workflow_assembly/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/cuspuk/workflow_assembly/actions/workflows/main.yml?branch=main)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://conventionalcommits.org)
 
 Snakemake workflow for assembly
 
 ## Installing and running
 
-To install the workflow, simply git clone the repository into the path you want:
+To install the workflow, simply git clone the repository.
+
+Then, install the following conda environment:
 
 ```bash
-git clone git@github.com:xsitarcik/assembly.git
-```
-
-Install the following conda environment:
-
-```bash
-mamba create -c conda-forge -c bioconda --name snakemake_assembly python=3.11 snakemake=7.25 peppy snakemake-wrapper-utils
+mamba create -c conda-forge -c bioconda --name snakemake_v7_25 python=3.11 snakemake=7.25 peppy snakemake-wrapper-utils
 ```
 
 **IMPORTANT**: change the directory to the cloned repository - workflow directory. Every relative path mentioned is relative to this directory.
