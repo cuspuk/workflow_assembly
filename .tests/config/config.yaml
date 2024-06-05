@@ -77,4 +77,4 @@ threads:
   assembly__report: 2
 
 module_versions:
-  reads: "v3.4.5"
+  reads: "v3.5.0" # str(v3.5.0): Version of reads module.
