@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.2](https://github.com/cuspuk/workflow_assembly/compare/v2.1.1...v2.1.2) (2024-06-05)
+
+
+### Bug Fixes
+
+* allow decontamination switch ([1b261fa](https://github.com/cuspuk/workflow_assembly/commit/1b261fa9c881e7a26b51d8617045e2982139e595))
+
 ## [2.1.1](https://github.com/cuspuk/workflow_assembly/compare/v2.1.0...v2.1.1) (2024-05-15)
 
 
