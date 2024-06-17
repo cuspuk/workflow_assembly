@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.3](https://github.com/cuspuk/workflow_assembly/compare/v2.1.2...v2.1.3) (2024-06-17)
+
+
+### Bug Fixes
+
+* reads outputs part of output function ([bdd0318](https://github.com/cuspuk/workflow_assembly/commit/bdd031859c36aacd80102a0123242cdbe3f777be))
+
 ## [2.1.2](https://github.com/cuspuk/workflow_assembly/compare/v2.1.1...v2.1.2) (2024-06-05)
 
 
