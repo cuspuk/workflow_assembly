@@ -22,6 +22,10 @@ def get_sample_names():
     return reads_workflow.get_sample_names()
 
 
+def get_reads_outputs():
+    return reads_workflow.get_outputs()
+
+
 ### Data input handling independent of wildcards ######################################################################
 
 
@@ -70,7 +74,7 @@ def validate_blast_tag(tag: str):
         "ref_prok_rep_genomes",
     ]
     if tag not in VALID_TAGS:
-        raise ValueError(f"{tag=} was inferred as Blast DB tag, which is not valid. {VALID_TAGS=}")
+        raise ValueError(f"{tag =} was inferred as Blast DB tag, which is not valid. {VALID_TAGS =}")
 
 
 def get_blast_ref_tag():
@@ -142,6 +146,7 @@ def get_outputs():
             assembly_tool=assembly_tools,
         )
 
+    outputs = outputs | get_reads_outputs()
     return outputs
 
 

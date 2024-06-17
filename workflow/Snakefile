@@ -24,7 +24,6 @@ for field in ["assembly", "classification", "report"]:
 
 rule all:
     input:
-        **reads_workflow.get_outputs(),
         **get_outputs(),
     default_target: True
     localrule: True
