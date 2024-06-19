@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.5](https://github.com/cuspuk/workflow_assembly/compare/v2.1.4...v2.1.5) (2024-06-19)
+
+
+### Performance Improvements
+
+* bumped config ([8c4c181](https://github.com/cuspuk/workflow_assembly/commit/8c4c1812f4659b1a99621913ff84a0dc6dfca054))
+
 ## [2.1.4](https://github.com/cuspuk/workflow_assembly/compare/v2.1.3...v2.1.4) (2024-06-19)
 
 
