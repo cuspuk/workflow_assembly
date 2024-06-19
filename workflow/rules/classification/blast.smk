@@ -106,8 +106,9 @@ rule custom__summary_html:
     output:
         html=report(
             "results/classification/{sample}/{assembly_tool}/blast/summary.html",
-            category="{sample}",
+            category="Assembly",
             labels={
+                "Sample": "{sample}",
                 "Type": "Blast report",
             },
         ),

@@ -4,8 +4,11 @@ rule bandage__visualise_contig_overlaps:
     output:
         report(
             "results/assembly/{sample}/{assembly_tool}/bandage/bandage.svg",
-            category="{sample}",
-            labels={"Type": "Bandage"},
+            category="Assembly",
+            labels={
+                "Sample": "{sample}",
+                "Type": "Bandage SVG",
+            },
         ),
     params:
         dir=lambda wildcards, output: os.path.dirname(output[0]),

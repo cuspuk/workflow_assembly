@@ -4,8 +4,11 @@ rule quast__evaluate_assembly:
     output:
         pdf=report(
             "results/assembly/{sample}/{assembly_tool}/QUAST/report.pdf",
-            category="{sample}",
-            labels={"Type": "QUAST"},
+            category="Assembly",
+            labels={
+                "Sample": "{sample}",
+                "Type": "QUAST report",
+            },
         ),
         basic_reports=multiext("results/assembly/{sample}/{assembly_tool}/QUAST/report.", "html", "tex", "txt", "tsv"),
         transposed=multiext("results/assembly/{sample}/{assembly_tool}/QUAST/transposed_report.", "tex", "txt", "tsv"),
