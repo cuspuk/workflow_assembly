@@ -1,16 +1,16 @@
 reads: # Specify the order and methods for each read processing step. If no method is specified, the step will not be performed.
   subsampling: null # null/enum: Subsampling method, if not set, subsampling will not be performed. Allowed: 'seqtk'.
   trimming: "cutadapt" # null/enum: Trimming method, if not set, trimming will not be performed. Allowed: 'cutadapt'.
-  decontamination: "kraken" # null/enum: Decontamination method, if not set, decontamination will not be performed. Allowed: 'kraken'.
+  decontamination: null # null/enum: Decontamination method, if not set, decontamination will not be performed. Allowed: 'kraken', 'bwa'.
   deduplication: "fastuniq" # null/enum: Deduplication method, if not set, deduplication will not be performed. Allowed: 'fastuniq'.
   _generate_fastqc_for: ["original", "deduplication"] # list of enum: Specify which steps to generate fastqc for. Allowed: 'original','subsampling','trimming','decontamination','deduplication'.
 
-assembly:
-  assembly: ["spades"] # list of min 1 enum: Assembly tool to use. Allowed: 'spades'.
-  report: ["quast", "bandage"] # list of enum: Reporting tool for assembly QC. Allowed: 'bandage','quast'.
-  classification: ["blast"] # list of enum: Classification method to use for contigs. Allowed: 'blast'.
+assembly: # Uses processed reads. If no assembly method is specified, the step will not be performed.
+  assembly: ["spades"] # list of enum([]): Assembly tool to use. Allowed: 'spades'.
+  report: ["quast", "bandage"] # list of enum([]): Reporting tool for assembly QC. Allowed: 'bandage','quast'.
+  classification: ["blast"] # list of enum([]): Classification method to use for contigs. Allowed: 'blast'.
 
-### HYPERPARAMETERS #############################
+### PARAMETERS #############################
 
 reads__subsampling__seqtk: # Relevant only if reads->subsampling is set to seqtk.
   seed: 1 # int(1): Seed value to use for random number generator.
@@ -56,6 +56,11 @@ reads__decontamination__kraken: # Relevant only if reads->decontamination is set
   generate_krona: false # bool(false): If true, krona is generated from kraken report.
   krona_dir: "/data/genome/taxonomy/krona/2023-12-03/" # null/str: Directory where krona dataset is located, or where will be downloaded.
 
+reads__decontamination__bwa: # Relevant only if reads->decontamination is set to bwa.
+  references: # list of min 1 str: List of reference fasta files.
+    - "/data/genome/human/grch38/grch38.fa"
+  filter_mode: "exclude" # enum(exclude): Mapped reads are either excluded or included. Allowed: 'include','exclude'.
+
 reads__deduplication__fastuniq: {} # Relevant only if reads->deduplication is set to fastuniq. There are no parameters to be defined.
 
 assembly__assembly__spades:
@@ -75,10 +80,10 @@ assembly__classification__blast:
   min_query_coverage: 0.01 # float: Show only hits that have at least this proportion of contig mapped to reference.
   seqs_per_page: 100 # int: Number of table rows (sequences) per page.
 
-# RESOURCES
+### RESOURCES #############################
 
-max_threads: 16 # int(16): Number of maximum threads to use in jobs.
-max_mem_mb: 64000 # int(64000): Maximum memory in megabytes to allocate for any job.
+max_threads: 16 # int(8): Number of maximum threads to use in jobs.
+max_mem_mb: 64000 # int(4096): Maximum memory in megabytes to allocate for any job.
 
 resources:
   reads__trimming_mem_mb: 4096 # int(4096): Memory in MB to reserve for trimming.
@@ -94,5 +99,6 @@ threads:
   assembly__assembly: 16 # int(16): Number of threads to use for assembly.
   assembly__classification: 8 # int(8): Number of threads to use for classification.
   assembly__report: 2 # int(2): Number of threads to use for reporting.
+
 module_versions:
-  reads: "v3.5.0" # str(v3.5.0): Version of reads module.
+  reads: "v3.6.0" # str(v3.6.0): Version of reads module.
