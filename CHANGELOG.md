@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.4](https://github.com/cuspuk/workflow_assembly/compare/v2.1.3...v2.1.4) (2024-06-19)
+
+
+### Bug Fixes
+
+* reports summarized into assembly dir ([a30b503](https://github.com/cuspuk/workflow_assembly/commit/a30b5036a494573ffe57b6c787b4a0946457a473))
+
 ## [2.1.3](https://github.com/cuspuk/workflow_assembly/compare/v2.1.2...v2.1.3) (2024-06-17)
 
 
